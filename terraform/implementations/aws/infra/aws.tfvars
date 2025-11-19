@@ -1,11 +1,11 @@
 # Environment name (infra component)
-cluster_name = "<cluster_name>"
+cluster_name = "training-radip"
 # MOSIP's domain (ex: sandbox.xyz.net)
-cluster_env_domain = "<cluster_name>.xxxxx.net"
+cluster_env_domain = "training-radip.mosip.net"
 # Email-ID will be used by certbot to notify SSL certificate expiry via email
-mosip_email_id = "<mosip_email_id>"
+mosip_email_id = "abhinandan@mosip.io"
 # SSH login key name for AWS node instances (ex: my-ssh-key)
-ssh_key_name = "<ssh_key_name>"
+ssh_key_name = "rapid"
 # The AWS region for resource creation
 aws_provider_region = "ap-south-1"
 
@@ -13,18 +13,18 @@ aws_provider_region = "ap-south-1"
 # If empty, uses all available AZs in the region
 # Example: ["ap-south-1a", "ap-south-1b"] for specific AZs
 # Example: [] for all available AZs in the region
-specific_availability_zones = []
+specific_availability_zones = ["ap-south-1b"]
 
 # The instance type for Kubernetes nodes (control plane, worker, etcd)
 k8s_instance_type = "t3a.2xlarge"
 # The instance type for Nginx server (load balancer)
 nginx_instance_type = "t3a.2xlarge"
 # The Route 53 hosted zone ID
-zone_id = "<route53_zone_id>"
+zone_id = "Z090954828SJIEL6P5406"
 
 ## UBUNTU 24.04
 # The Amazon Machine Image ID for the instances
-ami = "ami-xxxxxxxxxxxx" # Ubuntu 24.04 LTS AMI ID for ap-south-1
+ami = "ami-0ad21ae1d0696ad58" # Ubuntu 24.04 LTS AMI ID for ap-south-1
 
 # Repo K8S-INFRA URL
 k8s_infra_repo_url = "https://github.com/mosip/k8s-infra.git"
@@ -50,8 +50,8 @@ k8s_worker_node_count = 2
 rke2_version = "v1.28.9+rke2r1"
 
 # Security group CIDRs
-network_cidr   = "10.0.0.0/8" # Use your actual VPC CIDR
-WIREGUARD_CIDR = "10.0.0.0/8" # Use your actual WireGuard VPN CIDR
+network_cidr   = "10.0.0.0/16" # Use your actual VPC CIDR
+WIREGUARD_CIDR = "10.0.0.0/16" # Use your actual WireGuard VPN CIDR
 
 
 # Rancher Import URL
@@ -63,7 +63,7 @@ subdomain_public   = ["resident", "prereg", "esignet", "healthservices", "signup
 subdomain_internal = ["admin", "iam", "activemq", "kafka", "kibana", "postgres", "smtp", "pmp", "minio", "regclient", "compliance"]
 
 # PostgreSQL Configuration (used when second EBS volume is enabled)
-enable_postgresql_setup = true # Enable PostgreSQL setup for main infra
+enable_postgresql_setup = false # Enable PostgreSQL setup for main infra
 postgresql_version      = "15"
 storage_device          = "/dev/nvme2n1"
 mount_point             = "/srv/postgres"
@@ -76,6 +76,4 @@ mosip_infra_branch = "v0.1.0-beta.1"
 
 
 # VPC Configuration - Existing VPC to use (discovered by Name tag)
-vpc_name = "<vpc_name>"
-
-v
+vpc_name = "dst-vpc"
